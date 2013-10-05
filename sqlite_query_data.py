@@ -39,6 +39,7 @@ class QueryDataWidget(QWidget):
         self.layout = QVBoxLayout()
 
         self.query = QTextEdit()
+        self.query.setAcceptRichText(False)
         self.execute_query_button = QPushButton("Execute Query")
         self.table_view = QTableView()
 
@@ -64,13 +65,27 @@ class QueryDataWidget(QWidget):
         """executes the query and then displays the results within the widget"""
 
         query = self.query.toPlainText()
-        self.conn.query_model(query)
-        self.table_view.setModel(self.conn.model)
-        self.table_view.show()
-        if self.conn.model.lastError().isValid():
-            error_dialog = QMessageBox()
-            error_dialog.setText(self.conn.model.lastError().databaseText())
-            error_dialog.exec()
+        try:
+            self.conn.query_model(query)
+            self.table_view.setModel(self.conn.model)
+            self.table_view.show()
+            if self.conn.model.lastError().isValid():
+                error = self.conn.model.lastError().databaseText()
+                if error == "":
+                    error = "Unknown error"
+                self.error_box(error)
+        except AttributeError:
+            self.error_box("No database open",
+                           "Please open a database before trying to execute a query")
+
 
     def clear_table_model(self):
         self.table_view.setModel(None)
+
+    def error_box(self, message, inform = ""):
+        dialog = QMessageBox()
+        dialog.setIcon(2)
+        dialog.setWindowTitle("Error")
+        dialog.setText(message)
+        dialog.setInformativeText(inform)
+        dialog.exec()
