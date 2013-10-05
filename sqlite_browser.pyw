@@ -57,7 +57,7 @@ class BrowserWindow(QMainWindow):
 
         self.db_connection = None
 
-        self.logo = QPixmap(":/logo.png")
+        self.logo = QPixmap("icons/sqlinspector.ico")
 
         self.menu_bar = QMenuBar()
         self.file_menu = self.menu_bar.addMenu("File")
