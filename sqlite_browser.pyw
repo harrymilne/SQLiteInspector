@@ -132,7 +132,7 @@ class BrowserWindow(QMainWindow):
         #print(test.errorString())
         #print(test.isLoaded())
 
-        path = QFileDialog.getOpenFileName(caption="Open Database",filter="Database file (*.db *.dat)")
+        path = QFileDialog.getOpenFileName(caption="Open Database",filter="Database file (*.db *.dat);; All Files (*.*)")
         if len(path) > 0:
             #already have a connection object
             if self.db_connection:

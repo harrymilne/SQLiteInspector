@@ -1,4 +1,9 @@
+#folders
 /__pycache__/
 /.DS_Store
 /build/
 /images/
+
+#files
+*.bat
+*.pyc
