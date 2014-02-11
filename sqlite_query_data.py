@@ -35,7 +35,7 @@ class QueryDataWidget(QWidget):
     """A widget that provides space to input queries and view results"""
 
     def __init__(self):
-        super().__init__()
+        super(QWidget, self).__init__()
         self.layout = QVBoxLayout()
 
         self.query = QTextEdit()
@@ -88,4 +88,4 @@ class QueryDataWidget(QWidget):
         dialog.setWindowTitle("Error")
         dialog.setText(message)
         dialog.setInformativeText(inform)
-        dialog.exec()
+        dialog.exec_()

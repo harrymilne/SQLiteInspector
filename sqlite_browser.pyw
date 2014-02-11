@@ -53,7 +53,7 @@ import sqlite_images
 class BrowserWindow(QMainWindow):
     """Creates the main window for the application"""
     def __init__(self):
-        super().__init__()
+        super(QMainWindow, self).__init__()
 
         self.db_connection = None
 

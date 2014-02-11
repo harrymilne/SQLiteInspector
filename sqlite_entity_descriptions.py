@@ -35,7 +35,7 @@ from PyQt4.QtCore import *
 class EntityDescriptionWidget(QWidget):
     """A widget that can display entity descriptions from an open database connection"""
     def __init__(self):
-        super().__init__()
+        super(QWidget, self).__init__()
         self.layout = QVBoxLayout()
         self.entity_description = QTextEdit()
         self.entity_description.setReadOnly(True)

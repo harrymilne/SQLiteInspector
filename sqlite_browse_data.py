@@ -34,7 +34,7 @@ from PyQt4.QtSql import *
 class BrowseDataWidget(QWidget):
     """A widget that can display entity data and switch between available entities"""
     def __init__(self):
-        super().__init__()
+        super(QWidget, self).__init__()
         self.layout = QVBoxLayout()
 
         self.available_tables = QComboBox()
